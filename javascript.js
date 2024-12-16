@@ -36,7 +36,34 @@ function playRound(humanChoice, computerChoice) {
         computerScore++; // Increment computer score for a loss
         return `You lose! ${computerChoice} beats ${humanChoice}`;
     }
+// Main function to play 5 rounds and declare a winner
+function playGame() {
+    let playerTotalScore = 0;
+    let computerTotalScore = 0;
+
+    console.log("Starting the game...");
+
+    // Play 5 rounds
+    for (let round = 1; round <= 5; round++) {
+        const { playerScore, computerScore } = playRound(round);
+        playerTotalScore += playerScore;
+        computerTotalScore += computerScore;
+    }
+    console.log("\nGame Over!");
+    console.log(`Player Total Score: ${playerTotalScore}`);
+    console.log(`Computer Total Score: ${computerTotalScore}`);
+
+    // Determine the winner
+    if (playerTotalScore > computerTotalScore) {
+        console.log("Player wins!");
+    } else if (computerTotalScore > playerTotalScore) {
+        console.log("Computer wins!");
+    } else {
+        console.log("It's a tie!");
+    }
 }
 
+// Call the playGame function to start
+playGame();
 
 
